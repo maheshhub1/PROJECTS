@@ -1,3 +1,13 @@
+<<<<<<< HEAD
 .terraform
 .terraform.*.*
 terraform.*
+=======
+
+
+.terraform
+.terraform.**
+
+*.tfstate
+*.tfstate.*
+>>>>>>> 1b5e5ca93df122041ae1a5e229d4cb1b520886d2

@@ -1,3 +1,4 @@
+
 resource "aws_vpc" "MY-VPC" {
   cidr_block = "192.168.0.0/21"
   enable_dns_hostnames = true
@@ -194,4 +195,5 @@ resource "aws_instance" "private-instance" {
      Name ="private-instance"
   }
 }
+
 
