@@ -158,6 +158,7 @@ resource "aws_instance" "public-instance" {
   key_name = "tambiprv"
   depends_on = [ aws_instance.private-instance ]
   subnet_id = aws_subnet.public-subnet.id
+  security_groups = [aws_security_group.pub-sg.id]
   user_data = templatefile("ngnix.sh", {
     
     private_ip= aws_instance.private-instance.private_ip
@@ -173,13 +174,14 @@ resource "aws_instance" "private-instance" {
   ami = "ami-0af9569868786b23a"
   instance_type = "t2.micro"
   key_name  = "tambiprv"
+  security_groups = [aws_security_group.prv-sg.id]
   
   #private_ip = data.aws_instance.private-id.private_ip
   
   subnet_id = aws_subnet.private-subnet.id
   
   user_data = <<-EOF
-               !#/bin/bash
+               #!/bin/bash
                sudo yum update -y
                sudo yum install httpd -y
                sudo sytemctl start httpd 
